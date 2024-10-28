@@ -1,0 +1,16 @@
+.arrowButton {
+    width: 20px;
+    height: 20px;
+}
+#rightButton {
+    float: right;
+}
+#leftButton {
+    float: left;
+}
+#content {
+    text-align: center;
+}
+.flickerImage {
+    width: 400px;
+}
