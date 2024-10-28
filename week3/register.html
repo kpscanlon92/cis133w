@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Registration</title>
+  <script>
+    const REQUIRED_PASSWORD_CHARACTERS = "!@~#$%^&*+=";
+
+    function validateUserName() {
+      let value = document.getElementById("userName").value;
+      let message = document.getElementById("userNameMessage");
+
+      if (value === "") {
+        message.innerText = "Username must be one or more alphanumeric characters.";
+      } else {
+        message.innerText = "";
+      }
+
+      for (let counter = 0; counter < value.length; counter++) {
+        let character = value.charAt(counter);
+
+        if (!((character >= "a" && character <= "z")
+            || (character >= "A" && character <= "Z")
+            || (character >= "0" && character <= "9"))) {
+          message.innerText = "Character '" + character + "' is invalid in the username.";
+        }
+      }
+    }
+
+    function validatePassword() {
+      let value = document.getElementById("password").value;
+      let message = document.getElementById("passwordMessage");
+      let hasUpper = false;
+      let hasDigit = false;
+      let hasRequired = false;
+
+      if (value === "") {
+        message.innerText = "Password must be at least 8 characters, with at least 1 upper-case, and 1 character from '" + REQUIRED_PASSWORD_CHARACTERS + "'.";
+      } else {
+        message.innerText = "";
+      }
+
+      for (let counter = 0; counter < value.length; counter++) {
+        let character = value.charAt(counter);
+
+        if (character >= "A" && character <= "Z") {
+          hasUpper = true;
+        } else if (character >= "0" && character <= "9") {
+          hasDigit = true;
+        } else if (REQUIRED_PASSWORD_CHARACTERS.indexOf(character) >= 0) {
+          hasRequired = true;
+        }
+      }
+
+      if (!hasUpper) {
+        message.innerText = "Password must have at least one upper-case letter.";
+      } else if (!hasDigit) {
+        message.innerText = "Password must have at least one number";
+      } else if (!hasRequired) {
+        message.innerText = "Password must have 1 character from '" + REQUIRED_PASSWORD_CHARACTERS + "'.";
+      }
+
+    }
+  </script>
+  <style>
+
+  </style>
+</head>
+<body>
+<label for="userName"></label><input type="text" id="userName" oninput="validateUserName();">
+<span id="userNameMessage" style="color: red"></span>
+<br>
+<label for="password"></label><input type="password" id="password" oninput="validatePassword();">
+<span id="passwordMessage" style="color: red"></span>
+<br>
+
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Horoscope</title>
+  <script>
+    function displayHoroscope(sign) {
+      var text = document.getElementById('horoscopeText')
+      switch (sign) {
+        case 'aries':
+          text.innerText = "You'll have to give more than initially planned, considering what you'll gain.";
+          break;
+        case 'taurus':
+          text.innerText = "This person may not bring anything new to the table, but he or she still has something valuable to offer.";
+          break;
+        case 'gemini':
+          text.innerText = "Protecting what's yours could result in you reaping half the gains. You have to give to get. Be generous, and you can expect the same.";
+          break;
+        case 'cancer':
+          text.innerText = "No sooner do you settle one debt then you're faced with another, but your financial outlook improves after the 22nd.";
+          break;
+        case 'leo':
+          text.innerText = "An associate isn't trying to be deceptive; it's just that this person doesn't know how to break the news.";
+          break;
+        case 'virgo':
+          text.innerText = "Make a point of honoring all obligations -- no matter how tedious and conscientiousness now will be rewarded handsomely later.";
+          break;
+        case 'libra':
+          text.innerText = "You may be penalized for breaking an agreement, but see if you can be compensated for it";
+          break;
+        case 'scorpio':
+          text.innerText = "You resent being saddled with such a heavy burden, but take it in stride.";
+          break;
+        case 'sagittarius':
+          text.innerText = "The downside to collaboration is running everything you do by someone else, you'll learn a few things too.";
+          break;
+        case 'capricorn':
+          text.innerText = "You need time to yourself, it's the only way to differentiate what you want from what you feel is expected.";
+          break;
+        case 'aquarius':
+          text.innerText = "Quit while you're ahead, bring the discussion to a close and move on.";
+          break;
+        case 'pisces':
+          text.innerText = "Seek an older relative's advice, even if this person doesn't know exactly what you're going through.";
+          break;
+        default:
+          text.innerText = "On no Try again.";
+          break;
+      }
+    }
+
+    function validateResult() {
+      var value = document.getElementById("results").value;
+      var message = document.getElementById("resultMessage");
+      var messageIsYes = true;
+
+      if (value === "") {
+        message.innerText = "";
+        messageIsYes = false;
+      } else {
+        message.innerText = "";
+      }
+      for (var counter = 0; counter < value.length; counter++) {
+        var character = value.charAt(counter).toLowerCase();
+
+        if ((counter === 0 && character === "y") ||
+            (counter === 1 && character === "e" && messageIsYes) ||
+            (counter === 2 && character === "s" && messageIsYes)){
+          messageIsYes = true;
+        }
+        if ((counter === 0 && !(character === "y")) ||
+            (counter === 1 && !(character === "e")) ||
+            (counter === 2 && !(character === "s"))){
+          message.innerText = "I'm sorry, yes is the only correct answer";
+          messageIsYes = false;
+        }
+        if (counter === 2 && messageIsYes === true) {
+          message.innerText = "You are welcome."
+        }
+      }
+    }
+  </script>
+  <style>
+    h1, h2 {
+      text-align: center;
+    }
+    .container {
+      text-align: center;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    button {
+      background-color: lightyellow;
+      border: none;
+      border-radius: 12px;
+    }
+    .horoscopeText {
+      color: orangered;
+      font-size: x-large;
+    }
+    .text {
+      color: black;
+      font-size: x-large;
+    }
+  </style>
+</head>
+<body>
+  <h1>Horoscopes</h1>
+  <h2>Choose Your Zodiac Sign</h2>
+  <div class="container">
+    <button type="button" id="aries" onclick="displayHoroscope(this.id)">
+      <img class="image" src="Zodiac/zodiac_aries_icon.png" alt="image"><br>
+      Aries<br>
+      Mar 21 - Apr 19
+    </button>
+    <button type="button" id="taurus" onclick="displayHoroscope(this.id)">
+      <img class="image" src="Zodiac/zodiac_taurus_icon.png" alt="image"><br>
+      Taurus<br>
+      Apr 20 - May 20
+    </button>
+    <button type="button" id="gemini" onclick="displayHoroscope(this.id)">
+      <img class="image" src="Zodiac/zodiac_gemini_icon.png" alt="image"><br>
+      Gemini<br>
+      May 21 - Jun 20
+    </button>
+    <button type="button" id="cancer" onclick="displayHoroscope(this.id)">
+      <img class="image" src="Zodiac/zodiac_cancer_icon.png" alt="image"><br>
+      Cancer<br>
+      Jun 21 - Jul 22
+    </button>
+    <button type="button" id="leo" onclick="displayHoroscope(this.id)">
+      <img class="image" src="Zodiac/zodiac_leo_icon.png" alt="image"><br>
+      Leo<br>
+      Jul 23 - Aug 22
+    </button>
+    <button type="button" id="virgo" onclick="displayHoroscope(this.id)">
+      <img class="image" src="Zodiac/zodiac_virgo_icon.png" alt="image"><br>
+      Virgo<br>
+      Aug 23 - Sep 22
+    </button>
+    <button type="button" id="libra" onclick="displayHoroscope(this.id)">
+      <img class="image" src="Zodiac/zodiac_libra_icon.png" alt="image"><br>
+      Libra<br>
+      Sep 23 - Oct 22
+    </button>
+    <button type="button" id="scorpio" onclick="displayHoroscope(this.id)">
+      <img class="image" src="Zodiac/zodiac_scorpio_icon.png" alt="image"><br>
+      Scorpio<br>
+      Oct 23 - Nov 21
+    </button>
+    <button type="button" id="sagittarius" onclick="displayHoroscope(this.id)">
+      <img class="image" src="Zodiac/zodiac_sagittarius_icon.png" alt="image"><br>
+      Sagittarius<br>
+      Nov 22 - Dec 21
+    </button>
+    <button type="button" id="capricorn" onclick="displayHoroscope(this.id)">
+      <img class="image" src="Zodiac/zodiac_capricorn_icon.png" alt="image"><br>
+      Capricorn<br>
+      Dec 22 - Jan 19
+    </button>
+    <button type="button" id="aquarius" onclick="displayHoroscope(this.id)">
+      <img class="image" src="Zodiac/zodiac_aquarius_icon.png" alt="image"><br>
+      Aquarius<br>
+      Jan 20 - Feb 18
+    </button>
+    <button type="button" id="pisces" onclick="displayHoroscope(this.id)">
+      <img class="image" src="Zodiac/zodiac_pisces_icon.png" alt="image"><br>
+      Pisces<br>
+      Feb 19 - Mar 20
+    </button>
+  </div>
+  <br>
+  <span class="horoscopeText" id="horoscopeText"></span>
+  <br>
+  <div class="text">Do you like your horoscope? Please answer yes or no.</div>
+  <label for="results"></label><input type="text" id="results" oninput="validateResult();">
+  <span class="text" id="resultMessage"></span>
+
+</body>
+</html>

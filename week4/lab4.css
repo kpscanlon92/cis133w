@@ -1,0 +1,23 @@
+h1, h2 {
+    text-align: center;
+}
+#container {
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    flex-wrap: wrap;
+    gap: 10px;
+}
+button {
+    background-color: lightyellow;
+    border: none;
+    border-radius: 12px;
+}
+.horoscopeText {
+    color: orangered;
+    font-size: x-large;
+}
+.text {
+    color: black;
+    font-size: x-large;
+}
